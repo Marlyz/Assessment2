@@ -34,3 +34,22 @@ public String toString(){
 }
 
 }
+
+public class GradeCalculations {
+    public static void main(String[] args){
+        String filePath = "C://Users//mariy//Desktop//SCU//TERM 5//Fundamentals of programming//tables.csv";
+
+        List<Student> students = readFromFile(filePath);
+        
+        if (students.isEmpty()){
+            System.out.println("No valid student data found in the file.");
+            return;
+        }
+}
+
+private static List<Student> readFromFile(String filePath){
+    List<Student> students = new ArrayList<>();
+    return students;
+}
+}
+
