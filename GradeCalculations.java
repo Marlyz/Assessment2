@@ -60,11 +60,29 @@ public class GradeCalculations {
             System.out.print("Enter your choice (1-5): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
+            
+            switch (choice) {
+                case 1:
+                    printUnitName(filePath); //f1: print unit name from file 
+                    break;
+                    
+            }
 }
 }
 private static List<Student> readFromFile(String filePath){
     List<Student> students = new ArrayList<>();
     return students;
 }
+
+// method to print unit name
+private static void printUnitName(String filePath){
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))){ //BufferedReader to read file
+        String unitName = br.readLine(); // readLine reads the first line of the file
+        System.out.println("Unit Name: " + unitName);
+    } catch (IOException e){ // identify error if the file doesn't exist or cannot be read
+        e.printStackTrace();
+    }
+    }
 }
+
 
