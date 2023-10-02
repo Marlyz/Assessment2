@@ -68,8 +68,14 @@ public class GradeCalculations {
                 case 2:
                     printStudentsWithTotalMarks(students); //f2: print students details with total marks 
                     break;
-                    
-                    
+                case 3:
+                    System.out.print("Enter the threshold: ");
+                    double threshold = scanner.nextDouble();
+                    printStudentsBelowThreshold(students, threshold); //f3: print students below a given threshold
+                    break;
+                case 4:
+                    printTop5Students(students); //f4: print top 5 students
+                    break;
             }
 }
 }
@@ -94,5 +100,31 @@ private static void printStudentsWithTotalMarks(List<Student> students){
         System.out.println(student);
     }
 }
+
+// method to print student below a given threshold
+private static void printStudentsBelowThreshold(List<Student> students, double threshold){
+    for(Student student : students){
+        if (student.totalMark < threshold){
+        System.out.println(student);
+    }
 }
+}
+
+//method to print the top 5 students with highest and lowest total marks
+private static void printTop5Students(List<Student> students){
+    students.sort((s1, s2) -> Double.compare(s2.totalMark, s1.totalMark)); //list is sorted in descending order and compare the marks
+    
+    System.out.println("Top 5 Students (Highest Total Marks):");
+    for (int i = 0; i< Math.min(5, students.size()); i++){
+        System.out.println(students.get(i)); //prints the 5 students with the highest total marks first
+    }
+    
+    System.out.println("/nTop 5 Students (Lowest Total Marks):");
+    for (int i = students.size() - 1; i >= Math.max(0, students.size() - 5); i--){
+        System.out.println(students.get(i)); //prints the 5 students with the lowest total marks last.
+    }
+}
+}
+
+
 
