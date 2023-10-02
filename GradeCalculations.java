@@ -44,9 +44,24 @@ public class GradeCalculations {
         if (students.isEmpty()){
             System.out.println("No valid student data found in the file.");
             return;
+        
         }
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Print Unit Name");
+            System.out.println("2. Calculate Total Marks and Print Students information");
+            System.out.println("3. Print Students Below Threshold");
+            System.out.println("4. Print Top 5 Students (Highest and Lowest)");
+            System.out.println("5. Exit");
+            
+            System.out.print("Enter your choice (1-5): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 }
-
+}
 private static List<Student> readFromFile(String filePath){
     List<Student> students = new ArrayList<>();
     return students;
