@@ -65,6 +65,10 @@ public class GradeCalculations {
                 case 1:
                     printUnitName(filePath); //f1: print unit name from file 
                     break;
+                case 2:
+                    printStudentsWithTotalMarks(students); //f2: print students details with total marks 
+                    break;
+                    
                     
             }
 }
@@ -83,6 +87,12 @@ private static void printUnitName(String filePath){
         e.printStackTrace();
     }
     }
+    
+// method to print student details with total marks
+private static void printStudentsWithTotalMarks(List<Student> students){
+    for(Student student : students){
+        System.out.println(student);
+    }
 }
-
+}
 
