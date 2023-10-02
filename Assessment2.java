@@ -35,7 +35,7 @@ public String toString(){
 
 }
 
-public class GradeCalculations {
+public class Assessment2 {
     public static void main(String[] args){
         String filePath = "C://Users//mariy//Desktop//SCU//TERM 5//Fundamentals of programming//tables.csv";
 
@@ -76,12 +76,47 @@ public class GradeCalculations {
                 case 4:
                     printTop5Students(students); //f4: print top 5 students
                     break;
+                case 5: //f5: close the program
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option (1-5)");
             }
 }
 }
+
 private static List<Student> readFromFile(String filePath){
     List<Student> students = new ArrayList<>();
-    return students;
+    
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))){ //read from file
+        String line; // to store each line from the file
+        int lineCount = 0; //lineCount keep track of the line number being read.
+        
+        while ((line = br.readLine()) != null){ //read each line 
+            lineCount++; // increment the linecount for each line read
+            
+            if (lineCount <= 2){ 
+                continue; //skip the first two lines
+            }
+            
+            //slit the line into columns by ,
+            String[] columns = line.split(",");
+            
+            if (columns.length >= 6) { //ensure there are enough columns (6)
+                String firstName = columns[0].trim();
+                String lastName = columns[1].trim();
+                String studentID = columns[2].trim();
+                double A1 = Double.parseDouble(columns[3].trim());
+                double A2 = Double.parseDouble(columns[4].trim());
+                double A3 = Double.parseDouble(columns[5].trim());
+                
+                students.add(new Student(firstName, lastName, studentID, A1, A2, A3)); //creates new object and add to students list
+            }
+        }
+    } catch (IOException | NumberFormatException e){ //check errors
+        e.printStackTrace();
+    }
+                return students; //return list of students
 }
 
 // method to print unit name
